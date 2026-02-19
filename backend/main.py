@@ -84,6 +84,23 @@ def run_algorithm(request: GridRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+# ... (API endpoints)
+
+# Serve React Static Files
+app.mount("/assets", StaticFiles(directory="/app/frontend/dist/assets"), name="assets")
+
+@app.get("/{full_path:path}")
+async def serve_react_app(full_path: str):
+    # Check if file exists in dist
+    file_path = f"/app/frontend/dist/{full_path}"
+    if os.path.exists(file_path) and os.path.isfile(file_path):
+        return FileResponse(file_path)
+    # Otherwise return index.html for SPA routing
+    return FileResponse("/app/frontend/dist/index.html")
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
