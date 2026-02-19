@@ -1,5 +1,7 @@
 # AlgoVizualizer
 
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://algovizualizer.onrender.com/)
+
 **AlgoVizualizer** is a high-performance, interactive pathfinding visualizer built to demonstrate classic graph algorithms in a modern, aesthetically pleasing web interface.
 
 ## 🚀 Features
