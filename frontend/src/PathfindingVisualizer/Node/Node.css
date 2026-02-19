@@ -1,0 +1,99 @@
+.node {
+    width: 25px;
+    height: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-sizing: border-box; /* Prevent border from affecting size */
+}
+
+.node-finish {
+    background-color: #ef5350;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9v-2h2v2zm0-4H9V7h2v5z"/></svg>'); 
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Keep border consistent */
+    box-shadow: 0 4px 6px rgba(239, 83, 80, 0.4);
+}
+
+.node-start {
+    background-color: #66bb6a;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>');
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Keep border consistent */
+    box-shadow: 0 4px 6px rgba(102, 187, 106, 0.4);
+}
+
+.node-wall {
+    background-color: #2c3e50;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Keep border consistent */
+    animation-name: wallAnimation;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes wallAnimation {
+    0% {
+        transform: scale(0.3);
+        border-radius: 100%;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.node-visited {
+    animation-name: visitedAnimation;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+@keyframes visitedAnimation {
+    0% {
+        transform: scale(0.3);
+        background-color: rgba(100, 181, 246, 0.75);
+        border-radius: 100%;
+    }
+
+    50% {
+        background-color: rgba(33, 150, 243, 0.75);
+    }
+
+    100% {
+        transform: scale(1);
+        background-color: rgba(66, 165, 245, 0.8);
+        box-shadow: 0 0 4px rgba(66, 165, 245, 0.4);
+    }
+}
+
+.node-path {
+    animation-name: shortestPath;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+@keyframes shortestPath {
+    0% {
+        transform: scale(0.6);
+        background-color: #ffca28;
+    }
+
+    100% {
+        transform: scale(1);
+        background-color: #ffb300;
+        box-shadow: 0 0 8px rgba(255, 179, 0, 0.6);
+    }
+}
